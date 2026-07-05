@@ -1,171 +1,140 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buat Zidna🤗</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Dancing+Script:wght@600&family=Poppins&display=swap');
-        
-        body {
-            margin: 0;
-            padding: 20px 0;
-            background: #fdfaf4 url('https://www.transparenttextures.com/patterns/lined-paper-2.png');
-            font-family: 'Poppins', sans-serif;
-            color: #2c3e50;
-        }
-        .container {
-            max-width: 650px;
-            margin: auto;
-            padding: 20px;
-        }
-        .page {
-            margin-bottom: 60px;
-            position: relative;
-            padding: 20px;
-            animation: jatuh 1s ease; /* EFEK JATUH */
-        }
-        @keyframes jatuh {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        h1 {
-            font-family: 'Caveat', cursive;
-            font-size: 55px;
-            color: #2563eb;
-            text-align: center;
-            margin: 10px 0;
-        }
-        h2 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 40px;
-            color: #2563eb;
-            text-align: center;
-            margin: 5px 0;
-        }
-        .nama {
-            color: #ec4899;
-            font-weight: bold;
-        }
-        p {
-            font-size: 17px;
-            line-height: 1.9;
-            text-align: justify;
-        }
-
-        /* FOTO POLAROID SCRAPBOOK */
-        .polaroid {
-            width: 160px;
-            background: white;
-            padding: 10px 10px 40px 10px;
-            box-shadow: 3px 3px 15px rgba(0,0,0,0.2);
-            position: absolute;
-            transition: 0.3s;
-        }
-        .polaroid:hover {
-            transform: rotate(0deg) scale(1.05);
-        }
-        .polaroid img {
-            width: 100%;
-            height: 160px;
-            object-fit: cover;
-        }
-        .polaroid p {
-            text-align: center;
-            font-family: 'Caveat', cursive;
-            font-size: 18px;
-            margin: 8px 0 0 0;
-        }
-        .polaroid.kiri { left: 0; top: 80px; transform: rotate(-8deg); }
-        .polaroid.kanan { right: 0; top: 50px; transform: rotate(8deg); }
-
-        .doodle {
-            position: absolute;
-            font-size: 45px;
-            opacity: 0.8;
-        }
-        #musik { display: none; }
-        .play-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #ec4899;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            font-size: 20px;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            z-index: 999;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Zidna 💖</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { 
+  font-family: 'Poppins', sans-serif; 
+  background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+  overflow: hidden;
+  height: 100vh;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  color: white;
+  padding: 20px;
+}
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  animation: fadeIn 2s ease-in;
+}
+#typed-text {
+  font-size: 1.2em;
+  max-width: 600px;
+  min-height: 100px;
+  border-right: 2px solid white;
+  animation: blink 0.7s infinite;
+}
+.slideshow {
+  width: 300px;
+  height: 300px;
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 20px 0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+.slideshow img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: fade 3s infinite;
+}
+.heart {
+  position: absolute;
+  color: #ff4d6d;
+  font-size: 20px;
+  animation: fall 4s linear infinite;
+}
+@keyframes fall {
+ 0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+ 100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+}
+@keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
+@keyframes blink { 50% { border-color: transparent; }
+@keyframes fade { 0%,100%{opacity:1} 50%{opacity:0.3} }
+#music-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+</style>
 </head>
 <body>
 
-    <audio id="musik" loop>
-        <source src="lagu.mp3">
-    </audio>
-    <button class="play-btn" onclick="document.getElementById('musik').play()">🎵</button>
+<div class="container">
+  <h1>Happy Birthday Zidna! 🎉</h1>
+  
+  <div class="slideshow">
+    <img id="slide" src="1.jpg" alt="foto">
+  </div>
 
-    <div class="container">
+  <div id="typed-text"></div>
+</div>
 
-        <!-- HALAMAN 1 -->
-        <div class="page">
-            <span class="doodle" style="top:10px; right:30px;">🎂</span>
-            <span class="doodle" style="top:120px; right:10px;">🍦</span>
-            <span class="doodle" style="top:50px; left:200px;">🎉</span>
-            <h1>Happy</h1>
-            <h1>Birthday</h1>
-            <p style="text-align:center; font-size:20px"><span class="nama">Zidna Ilma Rahma Tsurayya</span> inaa <3</p>
-            
-            <div class="polaroid kiri">
-                <img src="1.jpg">
-                <p>my inaa ♡</p>
-            </div>
-        </div>
+<button id="music-btn">🎵</button>
+<audio id="song" loop>
+  <source src="lagu.mp3" type="audio/mpeg">
+</audio>
 
-        <!-- HALAMAN 2 -->
-        <div class="page">
-            <span class="doodle" style="top:0; left:10px;">🎈</span>
-            <span class="doodle" style="top:10px; right:30px;">🧁</span>
-            <h2>Hi inaa</h2>
-            <p style="text-align:center">happy 14th inaa ♡</p>
-            <p>
-            Hari ini bukan cuma hari biasa, tapi hari ini adalah hari di mana dunia jadi lebih indah karena kamu lahir. 
-            Aku bersyukur banget bisa kenal kamu sampai saat ini. Semoga semua hal baik selalu menghampiri kamu di tahun ini dan di tahun-tahun berikutnyaa. 
-            Semoga kebahagiaan selalu ada di raut wajah kamu, kebaikan selalu ada di diri kamuu 🤍
-            </p>
-        </div>
+<script>
+// 1. TEKS KETIK OTOMATIS - GANTI DI SINI
+const text = "Selamat ulang tahun Zidna! Makasih udah jadi temen terbaik aku. Semoga semua doa baik kamu terkabul yaa. Aku sayang kamu 💖";
+let i = 0;
+function typing() {
+  if (i < text.length) {
+    document.getElementById("typed-text").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typing, 80);
+  }
+}
+typing();
 
-        <!-- HALAMAN 3 -->
-        <div class="page">
-            <span class="doodle" style="top:0; left:10px;">🗓️</span>
-            <span class="doodle" style="top:0; right:30px;">🎈</span>
-            <h2>To My friend :</h2>
-            
-            <div class="polaroid kanan">
-                <img src="2.jpg">
-                <p>14 tahun 🎈</p>
-            </div>
+// 2. SLIDESHOW FOTO - TAMBAHIN FOTO DI ARRAY INI
+const photos = ["1.jpg", "2.jpg", "3.jpg"]; // tambahin "4.jpg", "5.jpg" dst
+let current = 0;
+setInterval(() => {
+  current = (current + 1) % photos.length;
+  document.getElementById("slide").src = photos[current];
+}, 3000);
 
-            <p>
-            Happy birthday friend <br>
-            Semoga di usia 14 ini, kamu makin bahagia, makin kuatt, dan selalu dikelilingi orang-orang yang sayang sama kamu <3 <br><br>
-            Makasih ya udah jadi diri kamu. Kamu selalu bisa buat aku bahagia. ❤️
-            </p>
-        </div>
+// 3. HUJAN HATI
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.innerHTML = "❤️";
+  heart.classList.add("heart");
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = Math.random() * 2 + 3 + "s";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 5000);
+}
+setInterval(createHeart, 300);
 
-        <!-- HALAMAN PENUTUP -->
-        <div class="page" style="text-align:center">
-            <h2>From:</h2>
-            <p style="font-size:22px; font-weight:600">Mulji Ibnu Maulana Apriadi</p>
-            <p>💖</p>
-        </div>
-
-    </div>
-
+// 4. MUSIK
+const song = document.getElementById("song");
+const btn = document.getElementById("music-btn");
+let playing = false;
+btn.onclick = () => {
+  if(playing) { song.pause(); btn.innerHTML = "🎵"; }
+  else { song.play(); btn.innerHTML = "⏸️"; }
+  playing =!playing;
+}
+</script>
 </body>
 </html>
