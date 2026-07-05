@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Zidna 💖</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { 
+  font-family: 'Poppins', sans-serif; 
+  background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+  overflow: hidden;
+  height: 100vh;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  color: white;
+  padding: 20px;
+}
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  animation: fadeIn 2s ease-in;
+}
+#typed-text {
+  font-size: 1.2em;
+  max-width: 600px;
+  min-height: 100px;
+  border-right: 2px solid white;
+  animation: blink 0.7s infinite;
+}
+.slideshow {
+  width: 300px;
+  height: 300px;
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 20px 0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+.slideshow img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: fade 3s infinite;
+}
+.heart {
+  position: absolute;
+  color: #ff4d6d;
+  font-size: 20px;
+  animation: fall 4s linear infinite;
+}
+@keyframes fall {
+ 0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+ 100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+}
+@keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
+@keyframes blink { 50% { border-color: transparent; }
+@keyframes fade { 0%,100%{opacity:1} 50%{opacity:0.3} }
+#music-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Happy Birthday Zidna! 🎉</h1>
+  
+  <div class="slideshow">
+    <img id="slide" src="1.jpg" alt="foto">
+  </div>
+
+  <div id="typed-text"></div>
+</div>
+
+<button id="music-btn">🎵</button>
+<audio id="song" loop>
+  <source src="lagu.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+// 1. TEKS KETIK OTOMATIS - GANTI DI SINI
+const text = "Selamat ulang tahun Zidna! Makasih udah jadi temen terbaik aku. Semoga semua doa baik kamu terkabul yaa. Aku sayang kamu 💖";
+let i = 0;
+function typing() {
+  if (i < text.length) {
+    document.getElementById("typed-text").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typing, 80);
+  }
+}
+typing();
+
+// 2. SLIDESHOW FOTO - TAMBAHIN FOTO DI ARRAY INI
+const photos = ["1.jpg", "2.jpg", "3.jpg"]; // tambahin "4.jpg", "5.jpg" dst
+let current = 0;
+setInterval(() => {
+  current = (current + 1) % photos.length;
+  document.getElementById("slide").src = photos[current];
+}, 3000);
+
+// 3. HUJAN HATI
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.innerHTML = "❤️";
+  heart.classList.add("heart");
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = Math.random() * 2 + 3 + "s";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 5000);
+}
+setInterval(createHeart, 300);
+
+// 4. MUSIK
+const song = document.getElementById("song");
+const btn = document.getElementById("music-btn");
+let playing = false;
+btn.onclick = () => {
+  if(playing) { song.pause(); btn.innerHTML = "🎵"; }
+  else { song.play(); btn.innerHTML = "⏸️"; }
+  playing =!playing;
+}
+</script>
+</body>
+</html>
